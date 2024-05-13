@@ -9,8 +9,8 @@ defineEmits(['close'])
 </script>
 
 <template>
-  <div class="overlay">
-    <div class="menu">
+  <div class="overlay" @click="$emit('close')">
+    <div class="menu" @click.stop="">
       <div class="items">
         <div class="header">
           <IconLogo />
