@@ -16,6 +16,5 @@ header {
   justify-content: center;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem 0 0;
 }
 </style>

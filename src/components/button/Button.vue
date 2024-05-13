@@ -4,7 +4,9 @@ defineEmits(['clicked'])
 
 <template>
   <button type="button" class="button" @click="$emit('clicked')">
+    <slot name="startIcon"></slot>
     <span class="label"><slot></slot></span>
+    <slot name="endIcon"></slot>
   </button>
 </template>
 
@@ -20,6 +22,7 @@ defineEmits(['clicked'])
     0px 1px 2px 0px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   height: 44px;
+  text-wrap: nowrap;
 }
 .button:disabled {
   background: #f5f5f5;
@@ -29,6 +32,27 @@ defineEmits(['clicked'])
   box-shadow: none;
 }
 
+.icon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+.icon.disabled {
+  color: var(--color-neutral-400);
+}
+.icon:hover {
+  color: var(--color-neutral-900);
+}
+.icon:focus {
+  color: var(--color-neutral-900);
+  box-shadow: 0 0 0 4px rgba(68, 76, 231, 0.12);
+  background: #fff;
+}
+
 .label {
   padding: 0px 2px;
   font-weight: var(--font-medium);
@@ -36,19 +60,18 @@ defineEmits(['clicked'])
   line-height: 1.5rem;
 }
 
-
 .secondary {
   border: 1px solid #e5e5e5;
   background-color: #fff;
   color: var(--color-neutral-900);
 }
-.secondry:hover:not(:disabled) {
+.secondary:hover:not(:disabled) {
   box-shadow:
     0 1px 2px 0 rgba(0, 0, 0, 0.06),
     0 1px 3px 0 rgba(0, 0, 0, 0.1);
   background: #fafafa;
 }
-.secondry:focus:not(:disabled) {
+.secondary:focus:not(:disabled) {
   box-shadow: 0 0 0 4px rgba(68, 76, 231, 0.12);
   background: #fafafa;
 }

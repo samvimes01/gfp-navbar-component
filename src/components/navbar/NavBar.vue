@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import Button from '@/components/button/Button.vue';
+import IconMenu from '@/components/icons/IconMenu.vue';
+import NavMenu from '@/components/navbar/NavMenu.vue';
+import { ref } from 'vue';
+
+const isMenuOpen = ref(false)
+const openMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
 <template>
@@ -18,7 +26,13 @@ import Button from '@/components/button/Button.vue';
       <Button class="secondary">Learn more</Button>
       <Button class="primary">See pricing</Button>
     </div>
+    <Button class="icon header-menu-btn" @clicked="openMenu">
+      <template #startIcon>
+        <IconMenu />
+      </template>
+    </Button>
   </div>
+  <NavMenu v-if="isMenuOpen" />
 </template>
 
 <style scoped>
@@ -32,6 +46,7 @@ import Button from '@/components/button/Button.vue';
   font-weight: var(--font-medium);
   line-height: 1.5rem;
   padding: 0.875rem 0;
+  margin: 1rem 0 0;
   height: 68px;
   flex: auto;
 }
@@ -43,10 +58,12 @@ import Button from '@/components/button/Button.vue';
   display: flex;
   gap: 16px;
 }
-@media (max-width: 991px) {
-  .header {
-    padding: 0 20px;
-  }
+
+.header-menu-btn {
+  display: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .logo {
@@ -64,9 +81,16 @@ import Button from '@/components/button/Button.vue';
   margin: auto 0;
 }
 
-@media (max-width: 991px) {
-  .navigation {
-    flex-wrap: wrap;
+@media (max-width: 768px) {
+  .header {
+    padding: 0 2rem;
+    gap: 1rem;
+  }
+  .navigation, .header-buttons {
+    display: none;
+  }
+  .header-menu-btn {
+    display: flex;
   }
 }
 
