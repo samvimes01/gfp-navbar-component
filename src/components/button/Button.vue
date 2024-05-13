@@ -40,6 +40,9 @@ defineEmits(['clicked'])
   margin: 0;
   border: none;
   box-shadow: none;
+  width: 20px;
+  height: 20px;
+  background: transparent;
 }
 .icon.disabled {
   color: var(--color-neutral-400);
